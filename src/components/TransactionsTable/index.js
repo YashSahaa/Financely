@@ -39,7 +39,10 @@ function TransactionsTable({transactions,addTransaction,fetchTransaction}) {
         },
     ];
 
-    let filteredTransactions = transactions.filter((item)=>((item.name.toLowerCase().includes(search.toLowerCase()) && (item.type.includes(typeFilter)))));
+
+    let filteredTransactions = transactions.filter((item)=>{
+      return (item.name.toLowerCase().includes(search.toLowerCase())) &&  ((item.type.includes(typeFilter)))
+    });
     
     let sortedTransactions = filteredTransactions.sort((a,b)=>{
       if(sortKey == "date"){
@@ -57,7 +60,7 @@ function TransactionsTable({transactions,addTransaction,fetchTransaction}) {
         data: transactions,
       });
       var blob = new Blob([csv], {type: 'text/csv;charset=utf-8;'});
-      var url = window.URL.createObjectURL(blob);
+      var url = URL.createObjectURL(blob);
       var link = document.createElement('a');
       link.href = url;
       link.download='transactions.csv';
@@ -116,7 +119,7 @@ function TransactionsTable({transactions,addTransaction,fetchTransaction}) {
 
               <div style={{display:"flex",justifyContent:"space-between",width:"300px"}}>
                 <button className='btn' onClick={exportCSV}>Export to CSV</button>
-                <label for="file-csv" className='btn btn-blue'>Import to CSV</label>
+                <label htmlFor="file-csv" className='btn btn-blue'>Import to CSV</label>
                 <input id='file-csv' type='file' accept='.csv' required onChange={importCSV} style={{display:"none"}}/>
               </div>
             </div>
