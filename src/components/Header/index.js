@@ -5,6 +5,7 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import { useNavigate } from 'react-router-dom';
 import { signOut } from "firebase/auth";
 import { toast } from 'react-toastify';
+import { FaRegUser } from "react-icons/fa";
 
 function Header() {
 
@@ -36,7 +37,17 @@ function Header() {
   return (
     <div className='navbar'>
       <p className='logo '>Financely.</p>
-      {user && (<p onClick={logoutFunc} className='logo link'>Logout</p>)}
+      {user && (
+        <div style={{display:"flex",alignItems:"center",gap:"0.75rem"}}>
+          {/* <img src= {user.photoURL?user.photoURL:""} style={{borderRadius:"50%",height:"1.5rem",width:"1.5rem"}}/> */}
+          {user.photoURL?(
+            <img src= {user.photoURL} style={{borderRadius:"50%",height:"1.5rem",width:"1.5rem"}}/>
+          ):(
+            <FaRegUser />
+          )}
+          <p onClick={logoutFunc} className='logo link'>Logout</p>
+        </div> 
+      )}
     </div>
   )
 }

@@ -14,7 +14,7 @@ function AddExpenseModal({isExpenseModalVisible,handleExpenseCancel,onFinish,}) 
     >
         <Form form={form} layout="vertical"
             onFinish={(values) => {
-                onFinish(values, "income");
+                onFinish(values, "expense");
                 form.resetFields();
             }}
         >
