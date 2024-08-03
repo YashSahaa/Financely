@@ -5,7 +5,7 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import { useNavigate } from 'react-router-dom';
 import { signOut } from "firebase/auth";
 import { toast } from 'react-toastify';
-import { FaRegUser } from "react-icons/fa";
+import { FaCircleUser } from "react-icons/fa6";
 
 function Header() {
 
@@ -43,7 +43,7 @@ function Header() {
           {user.photoURL?(
             <img src= {user.photoURL} style={{borderRadius:"50%",height:"1.5rem",width:"1.5rem"}}/>
           ):(
-            <FaRegUser />
+            <FaCircleUser style={{height:"1.5rem",width:"1.5rem"}}/>
           )}
           <p onClick={logoutFunc} className='logo link'>Logout</p>
         </div> 

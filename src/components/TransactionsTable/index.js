@@ -3,6 +3,7 @@ import { parse, unparse } from 'papaparse';
 import React, { useState } from 'react';
 import { IoMdSearch } from "react-icons/io";
 import { toast } from 'react-toastify';
+import "./style.css";
 
 function TransactionsTable({transactions,addTransaction,fetchTransaction}) {
 
@@ -102,19 +103,18 @@ function TransactionsTable({transactions,addTransaction,fetchTransaction}) {
         <div style={{width:"100" , padding:"0rem 2rem"}}>
             <div style={{display:"flex",justifyContent:"space-between",gap:"1rem",alignItems:"center",marginBottom:"1rem"}}>
               <div className='input-flex'>
-                {/* <img src="" width="16"/>  {/*searchImg*/ }
                 <IoMdSearch />
                 <input value={search} onChange={(e)=>setSearch(e.target.value)} placeholder='Search by name'/>
               </div>
               
-              <Select className='select-input' onChange={(value)=>setTypeFilter(value)} value={typeFilter} placeholder="Filter" allowClear>
+              <Select className='select-input'  onChange={(value)=>setTypeFilter(value)} value={typeFilter} placeholder="Filter" allowClear>
                   <Option value="">All</Option>
                   <Option value="income">Income</Option>
                   <Option value="expense">Expense</Option>
               </Select>
             </div>
             
-            <div style={{display:"flex",justifyContent:"space-between",width:"99%",alignItems:"center",marginBottom:"1rem"}}>
+            <div style={{display:"flex",justifyContent:"space-between",width:"100%",alignItems:"center",marginBottom:"1rem"}}>
               <h2>My Transactions</h2>
               <Radio.Group className='input-radio' onChange={(e)=>setSortKey(e.target.value)} value={sortKey}>
                 <Radio.Button value="">No Sort</Radio.Button>
@@ -122,7 +122,7 @@ function TransactionsTable({transactions,addTransaction,fetchTransaction}) {
                 <Radio.Button value="amount">Sort by Amount</Radio.Button>
               </Radio.Group>
 
-              <div style={{display:"flex",justifyContent:"space-between",width:"300px"}}>
+              <div style={{display:"flex",justifyContent:"space-between",width:"230px"}}>
                 <button className='btn' onClick={exportCSV}>Export to CSV</button>
                 <label htmlFor="file-csv" className='btn btn-blue'>Import to CSV</label>
                 <input id='file-csv' type='file' accept='.csv' required onChange={importCSV} style={{display:"none"}}/>

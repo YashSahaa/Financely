@@ -1,5 +1,6 @@
 import { Line, Pie } from '@ant-design/charts';
-import React from 'react'
+import React from 'react';
+import "./style.css";
 
 function ChartComponent({sortedTransactions}) {
     const data = sortedTransactions.map((item)=>{
@@ -24,7 +25,7 @@ function ChartComponent({sortedTransactions}) {
     
     const config = {
         data:data,
-        width:500,
+        width:750,
         autoFit: true,
         xField: 'date',
         yField: 'amount',
@@ -41,11 +42,11 @@ function ChartComponent({sortedTransactions}) {
     let pieChart;
     return (
         <div className='chart-wrapper'>
-            <div>
+            <div className='chart'>
                 <h2 style={{marginTop:"0"}}>Your Analytics</h2>
                 <Line {...config} onReady={(chartInstance)=> (chart=chartInstance)} />
             </div>
-            <div>
+            <div className='pie'>
                 <h2 style={{marginTop:"0"}}>Your Spendings</h2>
                 <Pie {...spendingConfig} onReady={(chartInstance)=> (pieChart=chartInstance)}/>
             </div>

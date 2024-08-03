@@ -163,7 +163,7 @@ function Signupsignin() {
             <Button disabled={loading} text={loading?"Loading...":"Login using Email and Password"} onClick={loginUsingEmail}/>
             <p className='p-login'>or</p>
             <Button onClick={googleAuth} text={loading?"Loading...":"Login using Google"} blue={true}/>
-            <p className='p-login' style={{cursor:"pointer"}} onClick={()=>setLoginForm(!loginForm)}>Or Don't Have An Account ? Click Here</p>
+            <p className='p-login' style={{cursor:"pointer"}} >Or Don't Have An Account ?<span onClick={()=>setLoginForm(!loginForm)} style={{color:"blue",fontWeight:"normal"}}>Click Here</span> </p>
           </form>
         </div>
       ) : (
@@ -177,7 +177,7 @@ function Signupsignin() {
             <Button disabled={loading} text={loading?"Loading...":"SignUp using Email and Password"} onClick={signupWithEmail}/>
             <p className='p-login'>or</p>
             <Button onClick={googleAuth} text={loading?"Loading...":"SignUp using Google"} blue={true}/>
-            <p className='p-login' style={{cursor:"pointer"}} onClick={()=>setLoginForm(!loginForm)}>Or Have An Account Already ? Click Here</p>
+            <p className='p-login' style={{cursor:"pointer"}} >Or Have An Account Already? <span onClick={()=>setLoginForm(!loginForm)} style={{color:"blue",fontWeight:"normal"}}>Click Here</span></p>
           </form>
         </div>
       )};
