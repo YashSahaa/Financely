@@ -24,8 +24,8 @@ function Signupsignin() {
     console.log("Password" , password);
     console.log("ConfirmPassword" , confirmPassword);
 
-    if(name!="" && email!="" && password!="" && confirmPassword!=""){
-      if(password==confirmPassword){
+    if(name!=="" && email!=="" && password!=="" && confirmPassword!==""){
+      if(password===confirmPassword){
         createUserWithEmailAndPassword(auth, email, password)
         .then((userCredential) => {
           // Signed up 
@@ -63,7 +63,7 @@ function Signupsignin() {
     console.log("Email" , email);
     console.log("Password" , password);
 
-    if(email!="" && password!=""){
+    if(email!=="" && password!==""){
       signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         // Signed in 

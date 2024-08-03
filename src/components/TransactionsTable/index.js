@@ -43,11 +43,16 @@ function TransactionsTable({transactions,addTransaction,fetchTransaction}) {
     let filteredTransactions = transactions.filter((item)=>{
       return (item.name.toLowerCase().includes(search.toLowerCase())) &&  ((item.type.includes(typeFilter)))
     });
+
+    let mapfilteredTransactions = filteredTransactions.map((transaction,index) => ({
+      ...transaction,
+      key:index, // Ensure each transaction has a unique key
+    }));
     
-    let sortedTransactions = filteredTransactions.sort((a,b)=>{
-      if(sortKey == "date"){
+    let sortedTransactions = mapfilteredTransactions.sort((a,b)=>{
+      if(sortKey === "date"){
         return new Date(a.date) - new Date(b.date);
-      }else if(sortKey == "amount"){
+      }else if(sortKey === "amount"){
         return a.amount - b.amount;
       }else{
         return 0;
@@ -123,7 +128,7 @@ function TransactionsTable({transactions,addTransaction,fetchTransaction}) {
                 <input id='file-csv' type='file' accept='.csv' required onChange={importCSV} style={{display:"none"}}/>
               </div>
             </div>
-            <Table dataSource={sortedTransactions} columns={columns} />
+            <Table  dataSource={sortedTransactions} columns={columns} />
         </div>
     )
 }

@@ -127,7 +127,7 @@ function Dashboard() {
       ):(
         <>
           <Cards income={income} expense={expense} totalBalance={totalBalance} showExpenseModal={showExpenseModal} showIncomeModal={showIncomeModal}/>
-          {transactions.length!=0 ?<ChartComponent sortedTransactions={sortedTransactions}/>:<NoTransaction/>}
+          {transactions.length!==0 ?<ChartComponent sortedTransactions={sortedTransactions}/>:<NoTransaction/>}
           <AddExpenseModal isExpenseModalVisible={isExpenseModalVisible} handleExpenseCancel={handleExpenseCancel} onFinish={onFinish}/>
           <AddIncomeModal isIncomeModalVisible={isIncomeModalVisible} handleIncomeCancel={handleIncomeCancel} onFinish={onFinish}/>
           <TransactionsTable transactions={transactions} addTransaction={addTransaction} fetchTransaction={fetchTransactions}/>
